@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc.ssm.person.mapper.PersonMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cc.ssm.person.entity.Person">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="age" property="age" />
+        <result column="birthday" property="birthday" />
+    </resultMap>
+
+    <insert id="add" parameterType="Person">
+        insert into person values (#{id},#{name},#{age},#{birthday})
+    </insert>
+
+    <delete id="delete" parameterType="Person">
+        delete from person where id = #{id}
+    </delete>
+
+    <select id="getOne" parameterType="int" resultType="Person">
+        select * from person where id = #{id}
+    </select>
+    
+    <update id="update" parameterType="Person">
+        update person set name = #{name},age = #{age},birthday = #{birthday} where id = #{id}
+    </update>
+
+    <select id="all" resultType="Person">
+        select * from person
+    </select>
+</mapper>
